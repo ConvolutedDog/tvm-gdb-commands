@@ -49,7 +49,7 @@
             "type": "cppdbg",
             "request": "attach",
             // Customize this to your venv python executable path
-            "program": "/home/yangjianchao/miniconda3/envs/tvm-build-venv/bin/python3",
+            "program": "/home/user/miniconda3/envs/tvm-build-venv/bin/python3",
             "processId": "${command:pickProcess}",
             "MIMode": "gdb",
             "setupCommands": [
@@ -69,16 +69,26 @@
          */
         {
             "name": "Pure C++ Debug",
-            "type": "lldb",
+            "type": "cppdbg",
             "request": "launch",
-            // Customize this to your executable path
-            "program": "${workspaceFolder}/build/oottvm_test",
+            // Customize `"program"` entry to your C++ executable path.
+            "program": "oot-tvm-example-project/build/oottvm_test",
             "args": [],
             "cwd": "${workspaceFolder}",
-            "console": "integratedTerminal",
-            "env": {
-                "EXAMPLEKEY": "EXAMPLEVALUE"
-            },
-        }
+            "MIMode": "gdb",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                },
+            ],
+            "environment": [
+                {
+                    "name": "EXAMPLEKEY",
+                    "value": "EXAMPLEVALUE"
+                }
+            ]
+        },
     ],
 }
