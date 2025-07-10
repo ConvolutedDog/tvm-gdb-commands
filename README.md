@@ -133,9 +133,11 @@ As the fowllowing image shows, we can choose the debugging mode in graphical int
 This is a hybrid debugging approach, and requires users to first launch the Python script, after which the C++ process will be automatically attached.
 
 > [!IMPORTANT]  
-> Customize the `"program"` entry in `.vscode/launch.json` to point to your Python virtual environment executable.  
-> Example path:
-> `"program": "/home/user/miniconda3/envs/tvm-build-venv/bin/python3"`
+> Customize the `"program"` entry in `.vscode/launch.json` to point to your Python virtual environment executable. Example path:
+> > `"program": "/home/user/miniconda3/envs/tvm-build-venv/bin/python3"`
+>
+> Commands that interact with the Debug Console should be preceded by `-exec`, example:
+> > `-exec p pc` or `-exec call tvm::Dump(mod)`
 
 Example:
 
@@ -148,7 +150,7 @@ This is a pure C++ debugging approach, where users can debug C++ components with
 > [!IMPORTANT]  
 > Customize the `"program"` entry in `.vscode/launch.json` to your C++ executable path.
 > Example path:  
-> `"program": "${workspaceFolder}/get_started/tutorials/a.out"`
+> > `"program": "${workspaceFolder}/get_started/tutorials/a.out"`
 
 Example:
 
