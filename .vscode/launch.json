@@ -10,7 +10,7 @@
          *      attached to.
          * Note:
          *   - Requires `benjamin-simmonds.pythoncpp-debug` (Python C++ Debugger)
-         *     and `vadimcn.vscode-lldb` (CodeLLDB) extension for C++ debugging.
+         *     extension for C++ debugging.
          *   - The following 1.1 and 1.2 configurations are subordinate to this configuration.
          */
         {
@@ -46,11 +46,19 @@
          */
         {
             "name": "C++: TVM Backend",
-            "type": "lldb",
+            "type": "cppdbg",
             "request": "attach",
             // Customize this to your venv python executable path
-            "program": "/opt/homebrew/Caskroom/miniconda/base/envs/tvm-build-venv/bin/python",
-            "pid": "${command:pickProcess}",
+            "program": "/home/yangjianchao/miniconda3/envs/tvm-build-venv/bin/python3",
+            "processId": "${command:pickProcess}",
+            "MIMode": "gdb",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ]
         },
         /*
          * Configuration 2: Pure C++ Debugging.
