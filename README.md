@@ -1,4 +1,4 @@
-# TVM specific GDB commands and LLDB debugging configuration in VSCode​
+# TVM specific GDB commands and GDB debugging configuration in VSCode​
 
 ## 1. TVM specific GDB commands
 
@@ -99,22 +99,19 @@ This extension adds 4 new commands to gdb that improve the experience of debuggi
     alias tvf = tvm_fields
     ```
 
-## 2. LLDB debugging configuration in VSCode​
+## 2. GDB debugging configuration in VSCode​
 
-The `.vscode/launch.json` configuration enables hybrid debugging of TVM's Python frontend (Python debugger) and C++ backend (LLDB) in VSCode.
-
-> [!WARNING]
-> Our current configuration only supports LLDB debugging. Please ensure you have LLDB installed on your system. We will subsequently provide some LLDB command scripts to assist with debugging.
+The `.vscode/launch.json` configuration enables hybrid debugging of TVM's Python frontend (Python debugger) and C++ backend (GDB) in VSCode.
 
 ### 2.1 Required VSCode Extensions
 
 Before using this configuration to debug TVM, we should install the following extensions for VSCode:
 
- - [CodeLLDB](https://marketplace.visualstudio.com/items?itemName=vadimcn.vscode-lldb): Search `vadimcn.vscode-lldb` in VSCode extension marketplace.
+ - [Python Debugger](https://marketplace.visualstudio.com/items?itemName=ms-python.debugpy): Search `ms-python.debugpy` in VSCode extension marketplace.
+ - [C/C++](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools): Search `ms-vscode.cpptools` in VSCode extension marketplace.
  - [​Python C++ Debugger​​](https://marketplace.visualstudio.com/items?itemName=benjamin-simmonds.pythoncpp-debug): Search `benjamin-simmonds.pythoncpp-debug` in VSCode extension marketplace.
- - [LLDB DAP](https://marketplace.visualstudio.com/items?itemName=llvm-vs-code-extensions.lldb-dap): Search `llvm-vs-code-extensions.lldb-dap` in VSCode extension marketplace.
 
-After installing the extensions, we should copy the `.vscode/launch.json` file to the root directory of your own project. And the next steps will explain some details that you should modify in the `launch.json` file.
+After installing the extensions, we should copy the `.vscode/launch.json` file to the root directory of your own TVM project. And the next steps will explain some details that you should modify in the `launch.json` file.
 
 ### 2.2 Debugging Modes​ and Usage
 
@@ -138,7 +135,7 @@ This is a hybrid debugging approach, and requires users to first launch the Pyth
 > [!IMPORTANT]  
 > Customize the `"program"` entry in `.vscode/launch.json` to point to your Python virtual environment executable.  
 > Example path:
-> `"program": "/opt/homebrew/Caskroom/miniconda/base/envs/tvm-build-venv/bin/python"`
+> `"program": "/home/user/miniconda3/envs/tvm-build-venv/bin/python3"`
 
 Example:
 
